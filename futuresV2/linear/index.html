@@ -649,7 +649,7 @@
   <!-- Navigation bar START -->
   <header class="top-nav">
     <div class="top-menu">
-        <a href="https://bybit-exchange.github.io/docs/inverse" class="logo-link" target="_self">
+        <a href="https://zoomexglobal.github.io/docs/inverse" class="logo-link" target="_self">
           <img src="../../images/logo-aed6448d.svg" class="logo" alt="" />
         </a>
 
@@ -1939,7 +1939,7 @@ clipboard.on('error', function(e) {
 </script>
 <h1 id='t-changelog'>Changelog</h1><h1 id='t-authentication'>Authentication</h1>
 <aside class="notice">
-Please visit Zoomex's <a href="https://testnet.bybit.com/app/user/api-management"> <b>testnet</b></a> or <a href="https://www.bybit.com/app/user/api-management"> <b>mainnet</b></a> to generate an API key
+Please visit Zoomex's testnet or mainnet to generate an API key
 </aside>
 
 <aside class="notice">
@@ -1953,7 +1953,7 @@ REST Base Endpoint:
   </p>
   <p>
     <li>Mainnet(both endpoints are available):<br/>
-      <span id="mainnet_1">https://api.bybit.com</span>
+      <span id="mainnet_1">https://openapi.zoomex.com</span>
       <button class="clipboard_button" data-clipboard-action="copy" data-clipboard-target="#mainnet_1"><img src="../../images/copy_to_clipboard-ff25494f.png" height=15 width=15></img></button>
       <br/>
     </li>
@@ -2475,7 +2475,7 @@ function copyStringToClipboard (endpoint) {
     <span class="dl">"</span><span class="s2">time_now</span><span class="dl">"</span><span class="p">:</span><span class="dl">"</span><span class="s2">1591263582.601795</span><span class="dl">"</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>Index price kline. Tracks BTC spot prices, with a frequency of every second (learn more <a href="https://www.bybit.com/app/contracts">here</a>).</p>
+<p>Index price kline. Tracks BTC spot prices, with a frequency of every second (learn more <a href="https://www.zoomex.com/">here</a>).</p>
 
 <p class="fake_header">HTTP Request</p>
 
@@ -2699,7 +2699,7 @@ Please note:
 <td style="text-align: left"><a href="#time-in-force-time_in_force">time_in_force</a></td>
 <td style="text-align: left"><b>true</b></td>
 <td style="text-align: left">string</td>
-<td><a href="https://www.bybit.com/en-US/help-center/bybitHC_Article?language=en_US&id=000001044">Time in force</a></td>
+<td>Time in force</td>
 </tr>
 <tr>
 <td style="text-align: left">reduce_only</td>
@@ -2801,7 +2801,7 @@ Please note:
 <tr>
 <td style="text-align: left"><a href="#time-in-force-time_in_force">time_in_force</a></td>
 <td style="text-align: left">string</td>
-<td><a href="https://www.bybit.com/en-US/help-center/bybitHC_Article?language=en_US&id=000001044">Time in force</a></td>
+<td>Time in force</td>
 </tr>
 <tr>
 <td style="text-align: left"><a href="#order-status-order_status-stop_order_status">order_status</a></td>
@@ -2945,7 +2945,7 @@ Please note:
 </p>
 
 <aside class="warning">
-This interface only supports to query <b>10k</b> orders per symbol for userId. If you need to get historical orders, please refer to the <a href="https://bybit-exchange.github.io/docs/derivativesV3/contract/#t-contract_getorder">api</a> from contract v3, which enables to get all status orders in recent 7days, and <b>FILLED</b> orders over 7 days
+This interface only supports to query <b>10k</b> orders per symbol for userId. If you need to get historical orders, please refer to the <a href="">api</a> from contract v3, which enables to get all status orders in recent 7days, and <b>FILLED</b> orders over 7 days
 
 </aside>
 
@@ -3056,7 +3056,7 @@ This interface only supports to query <b>10k</b> orders per symbol for userId. I
 <tr>
 <td style="text-align: left"><a href="#time-in-force-time_in_force">time_in_force</a></td>
 <td style="text-align: left">string</td>
-<td><a href="https://www.bybit.com/en-US/help-center/bybitHC_Article?language=en_US&id=000001044">Time in force</a></td>
+<td>Time in force</td>
 </tr>
 <tr>
 <td style="text-align: left"><a href="#order-status-order_status-stop_order_status">order_status</a></td>
@@ -3438,7 +3438,7 @@ Please note that only orders that are unfilled or partially filled can be modifi
 <tr>
 <td style="text-align: left"><a href="#time-in-force-time_in_force">time_in_force</a></td>
 <td style="text-align: left">string</td>
-<td><a href="https://www.bybit.com/en-US/help-center/bybitHC_Article?language=en_US&id=000001044">Time in force</a></td>
+<td>Time in force</td>
 </tr>
 <tr>
 <td style="text-align: left"><a href="#order-status-order_status-stop_order_status">order_status</a></td>
@@ -4211,7 +4211,7 @@ Passing these parameters will create conditional orders controlled by the system
 <tr>
 <td style="text-align: left">is_isolated</td>
 <td style="text-align: left">bool</td>
-<td>True means isolated margin, false means cross margin</td>
+<td>translation missing: en.isIsolated</td>
 </tr>
 <tr>
 <td style="text-align: left">position_margin</td>
@@ -4446,7 +4446,7 @@ Passing these parameters will create conditional orders controlled by the system
 <p>Get risk limit. <b>This endpoint does not require authentication.</b></p>
 
 <aside class="notice">
-Read more about the risk limit <a href="https://www.bybit.com/en-US/help-center/HelpCenterKnowledge/bybitHC_Article?language=en_US&id=000001164">here</a>.
+Read more about the risk limit <a href="">here</a>.
 </aside>
 
 <p class="fake_header">HTTP Request</p>
@@ -4573,7 +4573,7 @@ Read more about the risk limit <a href="https://www.bybit.com/en-US/help-center/
 <p>Set risk limit.</p>
 
 <aside class="notice">
-Read more about the risk limit <a href="https://www.bybit.com/en-US/help-center/HelpCenterKnowledge/bybitHC_Article?language=en_US&id=000001164">here</a>.
+Read more about the risk limit <a href="">here</a>.
 </aside>
 
 <p class="fake_header">HTTP Request</p>
@@ -4800,15 +4800,7 @@ If you receive <a href="#10006"><code><b>"ret_msg": "Too many visits!"</b></code
 </p>
 <h2 id='t-raisemylimit'>How to Increase API Limits</h2>
 <p><ul>
-<li>Please refer to <a href="#t-liquidity">Understanding Zoomex&#39;s Liquidity System</a> regarding how our system automatically allocates rate limits for users who place over 2,000 orders per day.</li>
-<li>Please email with the following information. We will reply within 1-4 working days:</li>
-  <ol>
-    <li>Your name and your company details</li>
-    <li>Your Zoomex UID or registered email, and the assets you are trading</li>
-    <li>General description of your trading strategy and reasons for higher rate limits</li>
-    <li>Screenshot of previous monthly trading volume (maker/taker) on other platforms</li>
-    <li>Optional: your order history in CSV format</li>
-  </ol>
+
 </ul>
 </p>
 <h2 id='t-liquidity'>Understanding Zoomex's Liquidity System</h2>
@@ -4988,8 +4980,8 @@ Prior notice will be given via the website if we update this mechanism.
 <aside class="notice">
 <b>Note that the following endpoints only apply to <i>USDT (Linear) Perpetual</i></b>. To listen to other websockets, go to:
 <ul>
-  <li><a href="https://bybit-exchange.github.io/docs/inverse/#t-websocketauthentication">Inverse Perpetual/Futures</a></li>
-  <li><a href="https://bybit-exchange.github.io/docs/spot/v3/#t-websocketauthentication">Spot</a></li>
+  <li><a href="https://zoomexglobal.github.io/docs/inverse/#t-websocketauthentication">Inverse Perpetual/Futures</a></li>
+  <li><a href="https://zoomexglobal.github.io/docs/spot/v3/#t-websocketauthentication">Spot</a></li>
 </ul>
 
 </aside>
@@ -5032,7 +5024,7 @@ Prior notice will be given via the website if we update this mechanism.
 <p>Authentication examples are shown in the code block.</p>
 
 <aside class="notice">
-Example signature algorithms can be found <a href="https://github.com/bybit-exchange/api-usage-examples">here</a>.
+Example signature algorithms can be found <a href="">here</a>.
 </aside>
 
 <aside class="warning">
@@ -6251,7 +6243,7 @@ If <code>confirm</code> is <code>True</code>, the data is the final tick for the
     <span class="p">]</span>
 <span class="p">}</span>
 </code></pre></div>
-<p>Get user's trading records. The results are ordered in ascending order (the first item is the oldest). If you want to get the records up to 2 years old, please refer to contract v3 <a href="https://bybit-exchange.github.io/docs/derivativesV3/contract/#t-usertraderecords">endpoint</a></p>
+<p>Get user's trading records. The results are ordered in ascending order (the first item is the oldest). If you want to get the records up to 2 years old, please refer to contract v3 <a href="https://zoomexglobal.github.io/docs/derivativesV3/contract/#t-usertraderecords">endpoint</a></p>
 
 <aside class="notice">
 This topic pushes all executions <i>except</i> <a href="#exec-type-exec_type"><code>Funding</code></a>.
@@ -6463,7 +6455,7 @@ This topic pushes all executions <i>except</i> <a href="#exec-type-exec_type"><c
 <tr>
 <td style="text-align: left"><a href="#time-in-force-time_in_force">time_in_force</a></td>
 <td style="text-align: left">string</td>
-<td><a href="https://www.bybit.com/en-US/help-center/bybitHC_Article?language=en_US&id=000001044">Time in force</a></td>
+<td>Time in force</td>
 </tr>
 <tr>
 <td style="text-align: left">create_type</td>
@@ -6630,7 +6622,7 @@ This topic pushes all executions <i>except</i> <a href="#exec-type-exec_type"><c
 <tr>
 <td style="text-align: left"><a href="#time-in-force-time_in_force">time_in_force</a></td>
 <td style="text-align: left">string</td>
-<td><a href="https://www.bybit.com/en-US/help-center/bybitHC_Article?language=en_US&id=000001044">Time in force</a></td>
+<td>Time in force</td>
 </tr>
 <tr>
 <td style="text-align: left">create_type</td>
@@ -7374,7 +7366,7 @@ ELSE
 <h2 id='34040'>34040</h2>
 <p>Set TP/SL/TS not modified.</p>
 <h2 id='35014'>35014</h2>
-<p><a href="https://www.bybit.com/en-US/help-center/HelpCenterKnowledge/bybitHC_Article?language=en_US&id=000001086">Open interest</code> exceeded.</a></p>
+<p><a href="">Open interest</code> exceeded.</a></p>
 <h2 id='37001'>37001</h2>
 <p>Both side positions tp_sl_mode is equal.</p>
 <h2 id='37002'>37002</h2>
