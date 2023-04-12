@@ -1683,13 +1683,12 @@ en:
   websocket_endpoints_aside: |
     <b>Note that the following endpoints only apply to <i>Inverse Perpetual/Futures</i></b>. To listen to other websockets, go to:
     <ul>
-      <li><a href="https://zoomexglobal.github.io/docs/linear/#t-websocketauthentication">USDT (Linear) Perpetual</a></li>
-      <li><a href="https://zoomexglobal.github.io/docs/spot/v3/#t-websocketauthentication">Spot</a></li>
+      <li><a href="https://zoomexglobal.github.io/docs/futuresV2/linear/#t-websocket">USDT (Linear) Perpetual</a></li>
     </ul>
   websocket_endpoints_aside_copytrading: |
     <b>Note that currently Copy Trading only supports USDT perpetual and the following endpoints only apply to <i>USDT (Linear) Perpetual</i></b>. To listen to other websockets, go to:
     <ul>
-      <li><a href="https://zoomexglobal.github.io/docs/inverse/#t-websocketauthentication">Inverse Perpetual</a></li>
+      <li><a href="https://zoomexglobal.github.io/docs/futuresV2/inverse/#t-websocket">Inverse Perpetual</a></li>
       <li><a href="https://zoomexglobal.github.io/docs/spot/v3/#t-websocketauthentication">Spot</a></li>
     </ul>
   websocket_para_endpoint: |
@@ -2881,7 +2880,7 @@ en:
   linear_websocket_endpoints_aside: |
     <b>Note that the following endpoints only apply to <i>USDT (Linear) Perpetual</i></b>. To listen to other websockets, go to:
     <ul>
-      <li><a href="https://zoomexglobal.github.io/docs/inverse/#t-websocketauthentication">Inverse Perpetual/Futures</a></li>
+      <li><a href="https://zoomexglobal.github.io/docs/futuresV2/inverse/#t-websocket">Inverse Perpetual/Futures</a></li>
       <li><a href="https://zoomexglobal.github.io/docs/spot/v3/#t-websocketauthentication">Spot</a></li>
     </ul>
   linear_websocket_para_endpoint: |

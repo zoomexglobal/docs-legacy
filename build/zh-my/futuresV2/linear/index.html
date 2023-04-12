@@ -3244,7 +3244,7 @@ function copyStringToClipboard (endpoint) {
     <span class="dl">"</span><span class="s2">time_now</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">1539778407.210858</span><span class="dl">"</span><span class="p">,</span>
     <span class="dl">"</span><span class="s2">rate_limit_status</span><span class="dl">"</span><span class="p">:</span> <span class="mi">99</span><span class="p">,</span>
     <span class="dl">"</span><span class="s2">rate_limit_reset_ms</span><span class="dl">"</span><span class="p">:</span> <span class="mi">1580885703683</span><span class="p">,</span>
-    <span class="dl">"</span><span class="s2">rate_limit</span><span class="dl">"</span><span class="p">:</span> <span class="mi">100</span>             
+    <span class="dl">"</span><span class="s2">rate_limit</span><span class="dl">"</span><span class="p">:</span> <span class="mi">100</span>
 <span class="p">}</span>
 </code></pre></div>
 <p><p>本接口可以修改您的活動單信息.</p>
@@ -4463,7 +4463,7 @@ function copyStringToClipboard (endpoint) {
 <span class="n">session_unauth</span> <span class="o">=</span> <span class="n">inverse_perpetual</span><span class="p">.</span><span class="n">HTTP</span><span class="p">(</span>
     <span class="n">endpoint</span><span class="o">=</span><span class="s">"https://openapi-testnet.zoomex.com"</span>
 <span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="n">session_unauth</span><span class="p">.</span><span class="n">server_time</span><span class="p">())</span>  
+<span class="k">print</span><span class="p">(</span><span class="n">session_unauth</span><span class="p">.</span><span class="n">server_time</span><span class="p">())</span>
 </code></pre></div>
 <blockquote>
 <p>響應示例</p>
@@ -4564,13 +4564,13 @@ function copyStringToClipboard (endpoint) {
     <td>/private/v1/position/list/usdt  </td>
     <td>1 / request</td>
   </tr>
- 
+
   <tr>
     <td rowspan="1">600/min</td>
     <td>/private/v1/order/list/usdt </td>
     <td>1 / request</td>
   </tr>
-  
+
 </table>
 <h2 id='t-orderlimits'>下單限製</h2>
 <p><p>每個交易對可以持有的訂單數量上限：</p>
@@ -4765,7 +4765,7 @@ B用戶：
 <aside class="notice">
 <b>請注意，以下接口僅適用於 <i>USDT (正向) 永續</i></b>. 要監聽其他 websocket，請轉到:
   <ul>
-    <li><a href="https://zoomexglobal.github.io/docs/inverse/#t-websocketauthentication">反向永續/反向交割</a></li>
+    <li><a href="https://zoomexglobal.github.io/docs/futuresV2/inverse/#t-websocket">反向永續/反向交割</a></li>
   </ul>
 
 </aside>

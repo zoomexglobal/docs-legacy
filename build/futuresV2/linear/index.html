@@ -3253,7 +3253,7 @@ This interface only supports to query <b>10k</b> orders per symbol for userId. I
     <span class="dl">"</span><span class="s2">time_now</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">1539778407.210858</span><span class="dl">"</span><span class="p">,</span>
     <span class="dl">"</span><span class="s2">rate_limit_status</span><span class="dl">"</span><span class="p">:</span> <span class="mi">99</span><span class="p">,</span>
     <span class="dl">"</span><span class="s2">rate_limit_reset_ms</span><span class="dl">"</span><span class="p">:</span> <span class="mi">1580885703683</span><span class="p">,</span>
-    <span class="dl">"</span><span class="s2">rate_limit</span><span class="dl">"</span><span class="p">:</span> <span class="mi">100</span>             
+    <span class="dl">"</span><span class="s2">rate_limit</span><span class="dl">"</span><span class="p">:</span> <span class="mi">100</span>
 <span class="p">}</span>
 </code></pre></div>
 <p><p>Replace order can modify/amend your active orders.</p>
@@ -4487,7 +4487,7 @@ Read more about the risk limit <a href="">here</a>.
 <span class="n">session_unauth</span> <span class="o">=</span> <span class="n">inverse_perpetual</span><span class="p">.</span><span class="n">HTTP</span><span class="p">(</span>
     <span class="n">endpoint</span><span class="o">=</span><span class="s">"https://openapi-testnet.zoomex.com"</span>
 <span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="n">session_unauth</span><span class="p">.</span><span class="n">server_time</span><span class="p">())</span>  
+<span class="k">print</span><span class="p">(</span><span class="n">session_unauth</span><span class="p">.</span><span class="n">server_time</span><span class="p">())</span>
 </code></pre></div>
 <blockquote>
 <p>Response Example</p>
@@ -4591,13 +4591,13 @@ If you receive <a href="#10006"><code><b>"ret_msg": "Too many visits!"</b></code
     <td>/private/v1/position/list/usdt  </td>
     <td>1 / request</td>
   </tr>
- 
+
   <tr>
     <td rowspan="1">600/min</td>
     <td>/private/v1/order/list/usdt </td>
     <td>1 / request</td>
   </tr>
-  
+
 </table>
 <h2 id='t-orderlimits'>Order Limits</h2>
 <p><p>Max. number of unfilled orders supported under each trading pair:</p>
@@ -4789,7 +4789,7 @@ Prior notice will be given via the website if we update this mechanism.
 <aside class="notice">
 <b>Note that the following endpoints only apply to <i>USDT (Linear) Perpetual</i></b>. To listen to other websockets, go to:
 <ul>
-  <li><a href="https://zoomexglobal.github.io/docs/inverse/#t-websocketauthentication">Inverse Perpetual/Futures</a></li>
+  <li><a href="https://zoomexglobal.github.io/docs/futuresV2/inverse/#t-websocket">Inverse Perpetual/Futures</a></li>
   <li><a href="https://zoomexglobal.github.io/docs/spot/v3/#t-websocketauthentication">Spot</a></li>
 </ul>
 

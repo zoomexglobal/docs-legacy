@@ -1358,14 +1358,13 @@ zh-my:
   websocket_endpoints_aside: |
     <b>請注意，以下接口僅適用於 <i>反向永續/反向交割</i></b>. 要監聽其他 websocket，請轉到:
     <ul>
-      <li><a href="https://zoomexglobal.github.io/docs/linear/#t-websocketauthentication">USDT (正向) 永續</a></li>
+      <li><a href="https://zoomexglobal.github.io/docs/zh-my/futuresV2/linear/#t-websocket">USDT (正向) 永續</a></li>
     </ul>
   websocket_endpoints_aside_copytrading: |
     <b>請注意，目前copytrading只支持正向永續，以下接口僅適用於 <i>正向永續</i></b>. 要監聽其他 websocket，請轉到:
     <ul>
-      <li><a href="https://zoomexglobal.github.io/docs/inverse/#t-websocketauthentication">Inverse Perpetual</a></li>
-      <li><a href="https://zoomexglobal.github.io/docs/zh-my/spot/v3/#t-websocketauthentication">Spot</a></li>
-    </ul>
+      <li><a href="https://zoomexglobal.github.io/docs/zh-my/futuresV2/inverse/#t-websocket">Inverse Perpetual</a></li>
+       </ul>
   websocket_para_endpoint: |
     <p>Websocket服務器地址:</p>
     <ul>
@@ -2544,7 +2543,7 @@ zh-my:
   linear_websocket_endpoints_aside: |
     <b>請注意，以下接口僅適用於 <i>USDT (正向) 永續</i></b>. 要監聽其他 websocket，請轉到:
       <ul>
-        <li><a href="https://zoomexglobal.github.io/docs/inverse/#t-websocketauthentication">反向永續/反向交割</a></li>
+        <li><a href="https://zoomexglobal.github.io/docs/zh-my/futuresV2/inverse/#t-websocket">反向永續/反向交割</a></li>
       </ul>
 
 
