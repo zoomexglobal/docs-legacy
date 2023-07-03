@@ -741,6 +741,102 @@ zh-my:
   usertraderecords_20200309: symbol是必填參數
   apikey_20200309: 返回結果中新增 <code>inviter_id</code>
 
+  caution: 警告
+  # instrument
+  instrument: 查詢可交易產品的規格信息
+  instrument_remark: 查詢全站可交易產品的基礎配置規則信息
+  instrument_covers: |
+    提示:
+    <ul>
+      <li>覆蓋範圍: USDT永續 / 反向合約</li>
+    </ul>
+  instrument_warn: |
+    警告:
+    <ul>
+      <li>現貨不支持翻頁，因此limit, cusor無效.</li>
+      <li>當通過baseCoin查詢時, 不管category=linear或inverse, 返回結果中都會包含USDT永續, USDC永續, USDC交割和反向合約的交易對.</li>
+    </ul>
+  instrument_parameter_category: 產品類型. <code>linear</code>,<code>inverse</code>
+  instrument_parameter_symbol: 合約名稱
+  instrument_parameter_status: |
+    交易對狀態篩選
+    <ul>
+      <li>現貨/期貨 僅有<code>Trading</code>狀態.</li>
+    </ul>
+  instrument_parameter_baseCoin: 交易貨幣
+  instrument_parameter_limit: 每頁數量限制. [<code>1</code>, <code>1000</code>]. 默認：<code>500</code>
+  instrument_parameter_cursor: 游標，用於翻頁
+
+  instrument_response_category: 產品類型
+  instrument_response_nextPageCursor: 游標，用於翻頁
+  instrument_response_list: Object
+  instrument_response_symbol: 合約名稱
+  instrument_response_contractType: 合約類型
+  instrument_response_status: 合約狀態
+  instrument_response_baseCoin: 交易幣種
+  instrument_response_quoteCoin: 報價幣種
+  instrument_response_launchTime: 發佈時間 (ms)
+  instrument_response_deliveryTime: 交割時間 (ms). 僅對交割合約有效
+  instrument_response_deliveryFeeRate: 交割費率. 僅對交割合約有效
+  instrument_response_priceScale: 價格精度
+  instrument_response_leverageFilter: 槓桿屬性
+  instrument_response_minLeverage: 最小槓桿
+  instrument_response_maxLeverage: 最大槓桿
+  instrument_response_leverageStep: 修改槓桿的步長
+  instrument_response_priceFilter: 價格屬性
+  instrument_response_minPrice: 訂單最小價格
+  instrument_response_maxPrice: 訂單最大價格
+  instrument_response_tickSize: 修改價格的步長
+  instrument_response_lotSizeFilter: 訂單數量屬性
+  instrument_response_maxOrderQty: 單筆訂單最大下單量
+  instrument_response_minOrderQty: 單筆訂單最小下單量
+  instrument_response_qtyStep: 修改下單量的步長
+  instrument_response_postOnlyMaxOrderQty: PostOnly單允許的最大下單量
+  instrument_response_unifiedMarginTrade: 是否支持統一保證金交易
+  instrument_response_fundingInterval: 資金費率結算週期 (分鐘)
+  instrument_response_settleCoin: 結算幣種
+  instrument_response_copyTrading: 當前交易對是否支持帶單交易
+
+  # tickers
+  tickers: 查詢最新行情信息
+  tickers_remark: 可獲取到快照的最新市場價格，最佳買賣價格，以及過去時間內的交易量等.
+  tickers_covers: |
+    提示:
+    <ul>
+      <li>覆蓋範圍: USDT永續 / 反向合約</li>
+    </ul>
+
+  tickers_parameter_category: 產品類型. <code>linear</code>,<code>inverse</code>
+  tickers_parameter_symbol: 合約名稱
+  tickers_parameter_baseCoin: 交易幣種. 僅<code>option</code>有效, <code>baseCoin</code>和<code>symbol</code>必傳其中一個
+  tickers_parameter_expDate: 到期日. 舉例, 25DEC22. 僅<code>option</code>有效
+
+  tickers_response_category: 產品類型
+  tickers_response_list: Object
+  tickers_response_symbol: 合約名稱
+  tickers_response_lastPrice: 最新市場成交價
+  tickers_response_indexPrice: 指數價格
+  tickers_response_markPrice: 標記價格
+  tickers_response_prevPrice24h: 24小時前的整點市價
+  tickers_response_price24hPcnt: 市場價格相對24h前變化的百分比
+  tickers_response_highPrice24h: 最近24小時的最高價
+  tickers_response_lowPrice24h: 最近24小時的最低價
+  tickers_response_prevPrice1h: 1小時前的整點市價
+  tickers_response_openInterest: 未平倉合約的數量
+  tickers_response_openInterestValue: 未平倉合約的價值
+  tickers_response_turnover24h: 最近24小時成交額
+  tickers_response_volume24h: 最近24小時成交量
+  tickers_response_fundingRate: 資金費率
+  tickers_response_nextFundingTime: 下次結算資金費用的時間 (毫秒)
+  tickers_response_predictedDeliveryPrice: 預計交割價格. 交割前30分鐘有值
+  tickers_response_basisRate: 交割合約基差率
+  tickers_response_basis: 交割合約基差
+  tickers_response_deliveryFeeRate: 交割費率
+  tickers_response_deliveryTime: 交割時間戳 (毫秒)
+  tickers_response_ask1Size: 買1價的數量
+  tickers_response_bid1Price: 買1價
+  tickers_response_ask1Price: 賣1價
+  tickers_response_bid1Size: 買1價的數量
 
   # api_auth
   authentication: 鑒權/認證
@@ -856,7 +952,7 @@ zh-my:
   market_para_auth_v3: <ul><li>以下市場行情接口不區分<b>普通帳戶</b>和<b>統一保證金帳戶</b></li><li>以下市場行情數據接口不需要驗權.</li></ul>
 
   ### Orderbook
-  orderbook: Orderbook
+  orderbook: 订单簿
   dv_orderbook: 查詢Order Book
   market_para_orderbook: 獲取Zoomex當前Orderbook信息. 每邊的深度為25<br>
   market_para_orderbook_500: 獲取Zoomex當前Orderbook信息. 每邊的深度為500<br>

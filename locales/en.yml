@@ -887,6 +887,105 @@ en:
       <li>Volume:  is in the same currency as the quantity's currency</li>
     </ul>
 
+  caution: caution
+
+  # instrument
+  instrument: Get Instruments Info
+  instrument_remark: Query for the instrument specification of online trading pairs.
+  instrument_covers: |
+    TIP:
+    <ul>
+      <li>Covers: USDT perpetual / Inverse contract.</li>
+    </ul>
+  instrument_warn: |
+    Please note:
+    <ul>
+      <li>Spot does not support pagination, so <code>limit</code>, <code>cursor</code> are invalid.</li>
+      <li>When query by <code>baseCoin</code>, regardless of category=<code>linear</code> or <code>inverse</code>, the result will have USDT perpetual, USDC contract and Inverse contract symbols.</li>
+    </ul>
+  instrument_parameter_category: Product type. <code>linear</code>,<code>inverse</code>
+  instrument_parameter_symbol: Symbol name
+  instrument_parameter_status: |
+    Symbol status filter
+    <ul>
+      <li>spot/linear/inverse has <code>Trading</code> only.</li>
+    </ul>
+  instrument_parameter_baseCoin: Base coin.
+  instrument_parameter_limit: Limit for data size per page. [<code>1</code>, <code>1000</code>]. Default： <code>500</code>
+  instrument_parameter_cursor: Cursor. Use the <code>nextPageCursor</code> token from the response to retrieve the next page of the result set
+
+  instrument_response_category: Product type
+  instrument_response_nextPageCursor: Cursor. Used to pagination
+  instrument_response_list: Object
+  instrument_response_symbol: Symbol name
+  instrument_response_contractType: Contract type
+  instrument_response_status: Instrument status
+  instrument_response_baseCoin: Base coin
+  instrument_response_quoteCoin: Quote coin
+  instrument_response_launchTime: Launch timestamp (ms)
+  instrument_response_deliveryTime: Delivery timestamp (ms)
+  instrument_response_deliveryFeeRate: Delivery fee rate
+  instrument_response_priceScale: Price scale
+  instrument_response_leverageFilter: Leverage attributes
+  instrument_response_minLeverage: Minimum leverage
+  instrument_response_maxLeverage: Maximum leverage
+  instrument_response_leverageStep: The step to increase/reduce leverage
+  instrument_response_priceFilter: Price attributes
+  instrument_response_minPrice: Minimum order price
+  instrument_response_maxPrice: Maximum order price
+  instrument_response_tickSize: The step to increase/reduce order price
+  instrument_response_lotSizeFilter: Size attributes
+  instrument_response_maxOrderQty: Maximum order quantity
+  instrument_response_minOrderQty: Minimum order quantity
+  instrument_response_qtyStep: The step to increase/reduce order quantity
+  instrument_response_postOnlyMaxOrderQty: Maximum order qty for PostOnly order
+  instrument_response_unifiedMarginTrade: Whether to support unified margin trade
+  instrument_response_fundingInterval: Funding interval (minute)
+  instrument_response_settleCoin: Settle coin
+  instrument_response_copyTrading: Copy trade symbol or not
+
+
+  # tickers
+  tickers: Get Tickers
+  tickers_remark: Query for the latest price snapshot, best bid/ask price, and trading volume in the last 24 hours.
+  tickers_covers:  |
+    TIP:
+    <ul>
+      <li>Covers: USDT perpetual / Inverse contract.</li>
+    </ul>
+
+  tickers_parameter_category: Product type. <code>linear</code>,<code>inverse</code>
+  tickers_parameter_symbol: Symbol name
+  tickers_parameter_baseCoin: Base coin. For <code>option</code> only
+  tickers_parameter_expDate: Expiry date. e.g., 25DEC22. For <code>option</code> only
+
+  tickers_response_category: Product type
+  tickers_response_list: Object
+  tickers_response_symbol: Symbol name
+  tickers_response_lastPrice: Last price
+  tickers_response_indexPrice: Index price
+  tickers_response_markPrice: Mark price
+  tickers_response_prevPrice24h: Market price 24 hours ago
+  tickers_response_price24hPcnt: Percentage change of market price relative to 24h
+  tickers_response_highPrice24h: The highest price in the last 24 hours
+  tickers_response_lowPrice24h: The lowest price in the last 24 hours
+  tickers_response_prevPrice1h: Market price an hour ago
+  tickers_response_openInterest: Open interest size
+  tickers_response_openInterestValue: Open interest value
+  tickers_response_turnover24h: Turnover for 24h
+  tickers_response_volume24h: Volume for 24h
+  tickers_response_fundingRate: Funding rate
+  tickers_response_nextFundingTime: Next funding time (ms)
+  tickers_response_predictedDeliveryPrice: Predicated delivery price. It has value when 30 min before delivery
+  tickers_response_basisRate: Basis rate
+  tickers_response_basis: Basis
+  tickers_response_deliveryFeeRate: Delivery fee rate
+  tickers_response_deliveryTime: Delivery timestamp (ms)
+  tickers_response_ask1Size: Best ask size
+  tickers_response_bid1Price: Best bid price
+  tickers_response_ask1Price: Best ask price
+  tickers_response_bid1Size: Best bid size
+
 
   # api_auth
   # t(:authentication)

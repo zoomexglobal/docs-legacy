@@ -159,3 +159,22 @@ t(:tp_sl_mode)
 * `StopLoss`
 * `TrailingStop`
 * `Stop`
+
+## Category (`category`)
+* `linear`
+* `inverse`
+
+## Status (`status`)
+* `PreLaunch`
+* `Trading`
+* `Settling`
+* `Delivering`
+* `Closed`
+
+## Copytrading (`copytrading`)
+* `none`
+* `both`
+* `utaOnly`
+* `normalOnly`
+
+
