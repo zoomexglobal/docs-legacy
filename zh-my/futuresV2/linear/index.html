@@ -731,7 +731,7 @@
             <a href="#t-marketdata" class="toc-h1 toc-link" data-title="行情接口">行情接口</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#t-orderbook" class="toc-h2 toc-link" data-title="Orderbook">Orderbook</a>
+                    <a href="#t-orderbook" class="toc-h2 toc-link" data-title="订单簿">订单簿</a>
                   </li>
                   <li>
                     <a href="#t-querykline" class="toc-h2 toc-link" data-title="查詢K線數據">查詢K線數據</a>
@@ -744,6 +744,12 @@
                   </li>
                   <li>
                     <a href="#t-queryindexpricekline" class="toc-h2 toc-link" data-title="查詢指數價格K線數據">查詢指數價格K線數據</a>
+                  </li>
+                  <li>
+                    <a href="#t-instrument" class="toc-h2 toc-link" data-title="查詢可交易產品的規格信息">查詢可交易產品的規格信息</a>
+                  </li>
+                  <li>
+                    <a href="#t-tickers" class="toc-h2 toc-link" data-title="查詢最新行情信息">查詢最新行情信息</a>
                   </li>
               </ul>
           </li>
@@ -1007,6 +1013,15 @@
                   </li>
                   <li>
                     <a href="#stop-order-type-stop_order_type" class="toc-h2 toc-link" data-title="Stop order type (stop_order_type)">Stop order type (<code>stop_order_type</code>)</a>
+                  </li>
+                  <li>
+                    <a href="#category-category" class="toc-h2 toc-link" data-title="Category (category)">Category (<code>category</code>)</a>
+                  </li>
+                  <li>
+                    <a href="#status-status" class="toc-h2 toc-link" data-title="Status (status)">Status (<code>status</code>)</a>
+                  </li>
+                  <li>
+                    <a href="#copytrading-copytrading" class="toc-h2 toc-link" data-title="Copytrading (copytrading)">Copytrading (<code>copytrading</code>)</a>
                   </li>
               </ul>
           </li>
@@ -2066,7 +2081,7 @@ function copyStringToClipboard (endpoint) {
 </script>
 <h1 id='t-marketdata'>行情接口</h1>
 <p>以下市場行情數據接口不需要驗權.</p>
-<h3 id='t-orderbook'>Orderbook</h3>
+<h3 id='t-orderbook'>订单簿</h3>
 <p><a href="/docs/futuresV2/inverse#t-orderbook">請點擊查看接口描述。</a></p>
 <h3 id='t-querykline'>查詢K線數據</h3>
 <blockquote>
@@ -2559,6 +2574,481 @@ function copyStringToClipboard (endpoint) {
 <td style="text-align: left">close</td>
 <td style="text-align: left">string</td>
 <td>結束價格</td>
+</tr>
+</tbody></table>
+<h3 id='t-instrument'>查詢可交易產品的規格信息</h3>
+<p>查詢全站可交易產品的基礎配置規則信息<br>
+<br/>
+<aside class="notice">
+提示:
+<ul>
+  <li>覆蓋範圍: USDT永續 / 反向合約</li>
+</ul>
+
+</aside></p>
+
+<aside class="warning">
+警告:
+<ul>
+  <li>現貨不支持翻頁，因此limit, cusor無效.</li>
+  <li>當通過baseCoin查詢時, 不管category=linear或inverse, 返回結果中都會包含USDT永續, USDC永續, USDC交割和反向合約的交易對.</li>
+</ul>
+
+</aside>
+
+<blockquote>
+<p>請求示例</p>
+</blockquote>
+<div class="highlight"><pre class="highlight console tab-console"><code><span class="go">curl "https://openapi-testnet.zoomex.com/public/v2/market/instruments-info?category=linear&amp;symbol=BTCUSDT"
+</span></code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">from</span> <span class="nn">pyzmx</span> <span class="kn">import</span> <span class="n">usdt_perpetual</span>
+<span class="n">session_unauth</span> <span class="o">=</span> <span class="n">usdt_perpetual</span><span class="p">.</span><span class="n">HTTP</span><span class="p">(</span>
+    <span class="n">endpoint</span><span class="o">=</span><span class="s">"https://openapi-testnet.zoomex.com"</span>
+<span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">session_unauth</span><span class="p">.</span><span class="n">get_instruments_info</span><span class="p">(</span>
+    <span class="n">category</span><span class="o">=</span><span class="s">"linear"</span><span class="p">,</span>
+    <span class="n">symbol</span><span class="o">=</span><span class="s">"BTCUSDT"</span><span class="p">,</span>
+<span class="p">))</span>
+</code></pre></div>
+<blockquote>
+<p>響應示例</p>
+</blockquote>
+<div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="p">{</span>
+  <span class="dl">"</span><span class="s2">retCode</span><span class="dl">"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="dl">"</span><span class="s2">retMsg</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">OK</span><span class="dl">"</span><span class="p">,</span>
+    <span class="dl">"</span><span class="s2">result</span><span class="dl">"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="dl">"</span><span class="s2">category</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">linear</span><span class="dl">"</span><span class="p">,</span>
+      <span class="dl">"</span><span class="s2">list</span><span class="dl">"</span><span class="p">:</span> <span class="p">[</span>
+      <span class="p">{</span>
+        <span class="dl">"</span><span class="s2">symbol</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">BTCUSDT</span><span class="dl">"</span><span class="p">,</span>
+        <span class="dl">"</span><span class="s2">contractType</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">LinearPerpetual</span><span class="dl">"</span><span class="p">,</span>
+        <span class="dl">"</span><span class="s2">status</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Trading</span><span class="dl">"</span><span class="p">,</span>
+        <span class="dl">"</span><span class="s2">baseCoin</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">BTC</span><span class="dl">"</span><span class="p">,</span>
+        <span class="dl">"</span><span class="s2">quoteCoin</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">USDT</span><span class="dl">"</span><span class="p">,</span>
+        <span class="dl">"</span><span class="s2">launchTime</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">1585526400000</span><span class="dl">"</span><span class="p">,</span>
+        <span class="dl">"</span><span class="s2">priceScale</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">2</span><span class="dl">"</span><span class="p">,</span>
+        <span class="dl">"</span><span class="s2">leverageFilter</span><span class="dl">"</span><span class="p">:</span> <span class="p">{</span>
+          <span class="dl">"</span><span class="s2">minLeverage</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">1</span><span class="dl">"</span><span class="p">,</span>
+          <span class="dl">"</span><span class="s2">maxLeverage</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">100.00</span><span class="dl">"</span><span class="p">,</span>
+          <span class="dl">"</span><span class="s2">leverageStep</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">0.01</span><span class="dl">"</span>
+        <span class="p">},</span>
+        <span class="dl">"</span><span class="s2">priceFilter</span><span class="dl">"</span><span class="p">:</span> <span class="p">{</span>
+          <span class="dl">"</span><span class="s2">minPrice</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">0.50</span><span class="dl">"</span><span class="p">,</span>
+          <span class="dl">"</span><span class="s2">maxPrice</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">999999.00</span><span class="dl">"</span><span class="p">,</span>
+          <span class="dl">"</span><span class="s2">tickSize</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">0.50</span><span class="dl">"</span>
+        <span class="p">},</span>
+        <span class="dl">"</span><span class="s2">lotSizeFilter</span><span class="dl">"</span><span class="p">:</span> <span class="p">{</span>
+          <span class="dl">"</span><span class="s2">maxOrderQty</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">100.000</span><span class="dl">"</span><span class="p">,</span>
+          <span class="dl">"</span><span class="s2">minOrderQty</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">0.001</span><span class="dl">"</span><span class="p">,</span>
+          <span class="dl">"</span><span class="s2">qtyStep</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">0.001</span><span class="dl">"</span><span class="p">,</span>
+          <span class="dl">"</span><span class="s2">postOnlyMaxOrderQty</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">1000.000</span><span class="dl">"</span>
+        <span class="p">},</span>
+        <span class="dl">"</span><span class="s2">fundingInterval</span><span class="dl">"</span><span class="p">:</span> <span class="mi">480</span><span class="p">,</span>
+        <span class="dl">"</span><span class="s2">settleCoin</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">USDT</span><span class="dl">"</span>
+      <span class="p">}</span>
+    <span class="p">],</span>
+      <span class="dl">"</span><span class="s2">nextPageCursor</span><span class="dl">"</span><span class="p">:</span> <span class="dl">""</span>
+  <span class="p">},</span>
+  <span class="dl">"</span><span class="s2">retExtInfo</span><span class="dl">"</span><span class="p">:</span> <span class="p">{},</span>
+  <span class="dl">"</span><span class="s2">time</span><span class="dl">"</span><span class="p">:</span> <span class="mi">1672712495660</span>
+<span class="p">}</span>
+</code></pre></div>
+<p class="fake_header">HTTP 請求</p>
+
+<p>GET
+<code><span id=instrument>/public/v2/market/instruments-info</span></code>
+<button class="clipboard_button" data-clipboard-action="copy" data-clipboard-target="#plIndexPriceKline"><img src="../../../images/copy_to_clipboard-ff25494f.png" height=15 width=15></img></button></p>
+
+<p class="fake_header">請求參數</p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameter</th>
+<th style="text-align: left">Required</th>
+<th style="text-align: left">Type</th>
+<th>Comments</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left"><a href="#category-category">category</a></td>
+<td style="text-align: left"><b>true</b></td>
+<td style="text-align: left">string</td>
+<td>產品類型. <code>linear</code>,<code>inverse</code></td>
+</tr>
+<tr>
+<td style="text-align: left"><a href="#symbol-symbol">symbol</a></td>
+<td style="text-align: left">false</td>
+<td style="text-align: left">string</td>
+<td>合約名稱</td>
+</tr>
+<tr>
+<td style="text-align: left"><a href="#status-status">status</a></td>
+<td style="text-align: left">false</td>
+<td style="text-align: left">string</td>
+<td>交易對狀態篩選</td>
+</tr>
+<tr>
+<td style="text-align: left">baseCoin</td>
+<td style="text-align: left">false</td>
+<td style="text-align: left">string</td>
+<td>交易貨幣</td>
+</tr>
+<tr>
+<td style="text-align: left">limit</td>
+<td style="text-align: left">false</td>
+<td style="text-align: left">integer</td>
+<td>每頁數量限制. [<code>1</code>, <code>1000</code>]. 默認：<code>500</code></td>
+</tr>
+<tr>
+<td style="text-align: left">cursor</td>
+<td style="text-align: left">false</td>
+<td style="text-align: left">string</td>
+<td>游標，用於翻頁</td>
+</tr>
+</tbody></table>
+
+<p class="fake_header">translation missing: zh-my.responseresponses</p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">translation missing: zh-my.column_response</th>
+<th style="text-align: left">類型</th>
+<th>說明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">category</td>
+<td style="text-align: left">string</td>
+<td>產品類型</td>
+</tr>
+<tr>
+<td style="text-align: left">nextPageCursor</td>
+<td style="text-align: left">string</td>
+<td>游標，用於翻頁</td>
+</tr>
+<tr>
+<td style="text-align: left">list</td>
+<td style="text-align: left">array</td>
+<td>Object</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt;symbol</td>
+<td style="text-align: left">string</td>
+<td>合約名稱</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt;contractType</td>
+<td style="text-align: left">string</td>
+<td>合約類型</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt;status</td>
+<td style="text-align: left">string</td>
+<td>合約狀態</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt;baseCoin</td>
+<td style="text-align: left">string</td>
+<td>交易幣種</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt;quoteCoin</td>
+<td style="text-align: left">string</td>
+<td>報價幣種</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt;launchTime</td>
+<td style="text-align: left">string</td>
+<td>發佈時間 (ms)</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt;priceScale</td>
+<td style="text-align: left">string</td>
+<td>價格精度</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt;leverageFilter</td>
+<td style="text-align: left">Object</td>
+<td>槓桿屬性</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt;&gt;minLeverage</td>
+<td style="text-align: left">string</td>
+<td>最小槓桿</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt;&gt;maxLeverage</td>
+<td style="text-align: left">string</td>
+<td>最大槓桿</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt;&gt;leverageStep</td>
+<td style="text-align: left">string</td>
+<td>修改槓桿的步長</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt;priceFilter</td>
+<td style="text-align: left">Object</td>
+<td>價格屬性</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt;&gt;minPrice</td>
+<td style="text-align: left">string</td>
+<td>訂單最小價格</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt;&gt;maxPrice</td>
+<td style="text-align: left">string</td>
+<td>訂單最大價格</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt;&gt;tickSize</td>
+<td style="text-align: left">string</td>
+<td>修改價格的步長</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt;lotSizeFilter</td>
+<td style="text-align: left">Object</td>
+<td>訂單數量屬性</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt;&gt;maxOrderQty</td>
+<td style="text-align: left">string</td>
+<td>單筆訂單最大下單量</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt;&gt;minOrderQty</td>
+<td style="text-align: left">string</td>
+<td>單筆訂單最小下單量</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt;&gt;qtyStep</td>
+<td style="text-align: left">string</td>
+<td>修改下單量的步長</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt;&gt;postOnlyMaxOrderQty</td>
+<td style="text-align: left">string</td>
+<td>PostOnly單允許的最大下單量</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt;fundingInterval</td>
+<td style="text-align: left">integer</td>
+<td>資金費率結算週期 (分鐘)</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt;settleCoin</td>
+<td style="text-align: left">string</td>
+<td>結算幣種</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt;<a href="#copytrading-copytrading">copyTrading</a></td>
+<td style="text-align: left">string</td>
+<td>當前交易對是否支持帶單交易</td>
+</tr>
+</tbody></table>
+<h3 id='t-tickers'>查詢最新行情信息</h3>
+<p>可獲取到快照的最新市場價格，最佳買賣價格，以及過去時間內的交易量等.<br>
+<br/>
+<aside class="notice">
+  提示:
+<ul>
+  <li>覆蓋範圍: USDT永續 / 反向合約</li>
+</ul>
+
+</aside></p>
+
+<blockquote>
+<p>請求示例</p>
+</blockquote>
+<div class="highlight"><pre class="highlight console tab-console"><code><span class="go">curl "https://openapi-testnet.zoomex.com/public/v2/market/tickers?category=inverse&amp;symbol=BTCUSD"
+</span></code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">from</span> <span class="nn">pyzmx</span> <span class="kn">import</span> <span class="n">usdt_perpetual</span>
+<span class="n">session_unauth</span> <span class="o">=</span> <span class="n">usdt_perpetual</span><span class="p">.</span><span class="n">HTTP</span><span class="p">(</span>
+    <span class="n">endpoint</span><span class="o">=</span><span class="s">"https://openapi-testnet.zoomex.com"</span>
+<span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">session_unauth</span><span class="p">.</span><span class="n">get_tickers</span><span class="p">(</span>
+    <span class="n">category</span><span class="o">=</span><span class="s">"inverse"</span><span class="p">,</span>
+    <span class="n">symbol</span><span class="o">=</span><span class="s">"BTCUSD"</span><span class="p">,</span>
+<span class="p">))</span>
+</code></pre></div>
+<blockquote>
+<p>響應示例</p>
+</blockquote>
+<div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="p">{</span>
+  <span class="dl">"</span><span class="s2">retCode</span><span class="dl">"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="dl">"</span><span class="s2">retMsg</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">OK</span><span class="dl">"</span><span class="p">,</span>
+    <span class="dl">"</span><span class="s2">result</span><span class="dl">"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="dl">"</span><span class="s2">category</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">inverse</span><span class="dl">"</span><span class="p">,</span>
+      <span class="dl">"</span><span class="s2">list</span><span class="dl">"</span><span class="p">:</span> <span class="p">[</span>
+      <span class="p">{</span>
+        <span class="dl">"</span><span class="s2">symbol</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">BTCUSD</span><span class="dl">"</span><span class="p">,</span>
+        <span class="dl">"</span><span class="s2">lastPrice</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">16597.00</span><span class="dl">"</span><span class="p">,</span>
+        <span class="dl">"</span><span class="s2">indexPrice</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">16598.54</span><span class="dl">"</span><span class="p">,</span>
+        <span class="dl">"</span><span class="s2">markPrice</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">16596.00</span><span class="dl">"</span><span class="p">,</span>
+        <span class="dl">"</span><span class="s2">prevPrice24h</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">16464.50</span><span class="dl">"</span><span class="p">,</span>
+        <span class="dl">"</span><span class="s2">price24hPcnt</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">0.008047</span><span class="dl">"</span><span class="p">,</span>
+        <span class="dl">"</span><span class="s2">highPrice24h</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">30912.50</span><span class="dl">"</span><span class="p">,</span>
+        <span class="dl">"</span><span class="s2">lowPrice24h</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">15700.00</span><span class="dl">"</span><span class="p">,</span>
+        <span class="dl">"</span><span class="s2">prevPrice1h</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">16595.50</span><span class="dl">"</span><span class="p">,</span>
+        <span class="dl">"</span><span class="s2">openInterest</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">373504107</span><span class="dl">"</span><span class="p">,</span>
+        <span class="dl">"</span><span class="s2">openInterestValue</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">22505.67</span><span class="dl">"</span><span class="p">,</span>
+        <span class="dl">"</span><span class="s2">turnover24h</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">2352.94950046</span><span class="dl">"</span><span class="p">,</span>
+        <span class="dl">"</span><span class="s2">volume24h</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">49337318</span><span class="dl">"</span><span class="p">,</span>
+        <span class="dl">"</span><span class="s2">fundingRate</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">-0.001034</span><span class="dl">"</span><span class="p">,</span>
+        <span class="dl">"</span><span class="s2">nextFundingTime</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">1672387200000</span><span class="dl">"</span><span class="p">,</span>
+        <span class="dl">"</span><span class="s2">ask1Size</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">1</span><span class="dl">"</span><span class="p">,</span>
+        <span class="dl">"</span><span class="s2">bid1Price</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">16596.00</span><span class="dl">"</span><span class="p">,</span>
+        <span class="dl">"</span><span class="s2">ask1Price</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">16597.50</span><span class="dl">"</span><span class="p">,</span>
+        <span class="dl">"</span><span class="s2">bid1Size</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">1</span><span class="dl">"</span>
+      <span class="p">}</span>
+    <span class="p">]</span>
+  <span class="p">},</span>
+  <span class="dl">"</span><span class="s2">retExtInfo</span><span class="dl">"</span><span class="p">:</span> <span class="p">{},</span>
+  <span class="dl">"</span><span class="s2">time</span><span class="dl">"</span><span class="p">:</span> <span class="mi">1672376496682</span>
+<span class="p">}</span>
+</code></pre></div>
+<p class="fake_header">HTTP 請求</p>
+
+<p>GET
+<code><span id=instrument>/public/v2/market/tickers</span></code>
+<button class="clipboard_button" data-clipboard-action="copy" data-clipboard-target="#plIndexPriceKline"><img src="../../../images/copy_to_clipboard-ff25494f.png" height=15 width=15></img></button></p>
+
+<p class="fake_header">請求參數</p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameter</th>
+<th style="text-align: left">Required</th>
+<th style="text-align: left">Type</th>
+<th>Comments</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left"><a href="#category-category">category</a></td>
+<td style="text-align: left"><b>true</b></td>
+<td style="text-align: left">string</td>
+<td>產品類型. <code>linear</code>,<code>inverse</code></td>
+</tr>
+<tr>
+<td style="text-align: left"><a href="#symbol-symbol">symbol</a></td>
+<td style="text-align: left">false</td>
+<td style="text-align: left">string</td>
+<td>合約名稱</td>
+</tr>
+</tbody></table>
+
+<p class="fake_header">返回參數</p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">參數</th>
+<th style="text-align: left">類型</th>
+<th>說明</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">category</td>
+<td style="text-align: left">string</td>
+<td>產品類型</td>
+</tr>
+<tr>
+<td style="text-align: left">list</td>
+<td style="text-align: left">array</td>
+<td>Object</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt;symbol</td>
+<td style="text-align: left">string</td>
+<td>合約名稱</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt;lastPrice</td>
+<td style="text-align: left">string</td>
+<td>最新市場成交價</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt;indexPrice</td>
+<td style="text-align: left">string</td>
+<td>指數價格</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt;markPrice</td>
+<td style="text-align: left">string</td>
+<td>標記價格</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt;prevPrice24h</td>
+<td style="text-align: left">string</td>
+<td>24小時前的整點市價</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt;price24hPcnt</td>
+<td style="text-align: left">string</td>
+<td>市場價格相對24h前變化的百分比</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt;highPrice24h</td>
+<td style="text-align: left">string</td>
+<td>最近24小時的最高價</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt;lowPrice24h</td>
+<td style="text-align: left">string</td>
+<td>最近24小時的最低價</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt;prevPrice1h</td>
+<td style="text-align: left">string</td>
+<td>1小時前的整點市價</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt;openInterest</td>
+<td style="text-align: left">Object</td>
+<td>未平倉合約的數量</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt;openInterestValue</td>
+<td style="text-align: left">string</td>
+<td>未平倉合約的價值</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt;turnover24h</td>
+<td style="text-align: left">string</td>
+<td>最近24小時成交額</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt;volume24h</td>
+<td style="text-align: left">string</td>
+<td>最近24小時成交量</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt;fundingRate</td>
+<td style="text-align: left">string</td>
+<td>資金費率</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt;nextFundingTime</td>
+<td style="text-align: left">string</td>
+<td>下次結算資金費用的時間 (毫秒)</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt;ask1Size</td>
+<td style="text-align: left">string</td>
+<td>買1價的數量</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt;bid1Price</td>
+<td style="text-align: left">Object</td>
+<td>買1價</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt;ask1Price</td>
+<td style="text-align: left">string</td>
+<td>賣1價</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt;bid1Size</td>
+<td style="text-align: left">string</td>
+<td>買1價的數量</td>
 </tr>
 </tbody></table>
 <h1 id='t-accountdata'>賬戶/交易接口</h1>
@@ -6740,6 +7230,26 @@ ELSE
 <li><code>StopLoss</code></li>
 <li><code>TrailingStop</code></li>
 <li><code>Stop</code></li>
+</ul>
+<h2 id='category-category'>Category (<code>category</code>)</h2>
+<ul>
+<li><code>linear</code></li>
+<li><code>inverse</code></li>
+</ul>
+<h2 id='status-status'>Status (<code>status</code>)</h2>
+<ul>
+<li><code>PreLaunch</code></li>
+<li><code>Trading</code></li>
+<li><code>Settling</code></li>
+<li><code>Delivering</code></li>
+<li><code>Closed</code></li>
+</ul>
+<h2 id='copytrading-copytrading'>Copytrading (<code>copytrading</code>)</h2>
+<ul>
+<li><code>none</code></li>
+<li><code>both</code></li>
+<li><code>utaOnly</code></li>
+<li><code>normalOnly</code></li>
 </ul>
 <h1 id='t-errors'>錯誤碼</h1>
 <p>Zoomex使用以下HTTP Code和錯誤碼：</p>
