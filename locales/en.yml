@@ -900,7 +900,7 @@ en:
   instrument_warn: |
     Please note:
     <ul>
-      <li>When query by <code>baseCoin</code>, regardless of category=<code>linear</code> or <code>inverse</code>, the result will have USDT perpetual, USDC contract and Inverse contract symbols.</li>
+      <li>When query by <code>baseCoin</code>, regardless of category=<code>linear</code> or <code>inverse</code>, the result will have USDT perpetual and Inverse contract symbols.</li>
     </ul>
   instrument_parameter_category: Product type. <code>linear</code>,<code>inverse</code>
   instrument_parameter_symbol: Symbol name
