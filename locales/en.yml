@@ -905,11 +905,7 @@ en:
     </ul>
   instrument_parameter_category: Product type. <code>linear</code>,<code>inverse</code>
   instrument_parameter_symbol: Symbol name
-  instrument_parameter_status: |
-    Symbol status filter
-    <ul>
-      <li>spot/linear/inverse has <code>Trading</code> only.</li>
-    </ul>
+  instrument_parameter_status: Symbol status filter
   instrument_parameter_baseCoin: Base coin.
   instrument_parameter_limit: Limit for data size per page. [<code>1</code>, <code>1000</code>]. Default： <code>500</code>
   instrument_parameter_cursor: Cursor. Use the <code>nextPageCursor</code> token from the response to retrieve the next page of the result set

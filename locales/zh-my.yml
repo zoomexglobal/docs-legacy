@@ -758,11 +758,7 @@ zh-my:
     </ul>
   instrument_parameter_category: 產品類型. <code>linear</code>,<code>inverse</code>
   instrument_parameter_symbol: 合約名稱
-  instrument_parameter_status: |
-    交易對狀態篩選
-    <ul>
-      <li>現貨/期貨 僅有<code>Trading</code>狀態.</li>
-    </ul>
+  instrument_parameter_status: 交易對狀態篩選
   instrument_parameter_baseCoin: 交易貨幣
   instrument_parameter_limit: 每頁數量限制. [<code>1</code>, <code>1000</code>]. 默認：<code>500</code>
   instrument_parameter_cursor: 游標，用於翻頁

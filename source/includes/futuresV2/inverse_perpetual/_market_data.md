@@ -748,8 +748,6 @@ GET
 |:------------------------------------------|:-------|:-----|------ |
 | <a href="#category-category">category</a> |<b>true</b> |string |t(:tickers_parameter_category)|
 | <a href="#symbol-symbol">symbol</a>       |false |string |t(:tickers_parameter_symbol)|
-[//]: # (| baseCoin                                  |false |string |t(:tickers_parameter_baseCoin) |)
-[//]: # (| expDate                                    |false |string |t(:tickers_parameter_expDate)|)
 
 <p class="fake_header">t(:responseparameters)</p>
 |t(:column_parameter)|t(:column_type)|t(:column_comments)|
@@ -771,11 +769,6 @@ GET
 |>volume24h| string| t(:tickers_response_volume24h)|
 |>fundingRate| string| t(:tickers_response_fundingRate)|
 |>nextFundingTime| string| t(:tickers_response_nextFundingTime)|
-[//]: # (|>predictedDeliveryPrice| Object| t(:tickers_response_predictedDeliveryPrice)|)
-[//]: # (|>basisRate| string| t(:tickers_response_basisRate)|)
-[//]: # (|>basis| string| t(:tickers_response_basis)|)
-[//]: # (|>deliveryFeeRate| string| t(:tickers_response_deliveryFeeRate)|)
-[//]: # (|>deliveryTime| string| t(:tickers_response_deliveryTime)|)
 |>ask1Size| string| t(:tickers_response_ask1Size)|
 |>bid1Price| Object| t(:tickers_response_bid1Price)|
 |>ask1Price| string| t(:tickers_response_ask1Price)|
