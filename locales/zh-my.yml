@@ -753,7 +753,6 @@ zh-my:
   instrument_warn: |
     警告:
     <ul>
-      <li>現貨不支持翻頁，因此limit, cusor無效.</li>
       <li>當通過baseCoin查詢時, 不管category=linear或inverse, 返回結果中都會包含USDT永續, USDC永續, USDC交割和反向合約的交易對.</li>
     </ul>
   instrument_parameter_category: 產品類型. <code>linear</code>,<code>inverse</code>
