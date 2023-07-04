@@ -748,6 +748,12 @@
                   <li>
                     <a href="#t-queryindexpricekline" class="toc-h2 toc-link" data-title="Query Index Price Kline">Query Index Price Kline</a>
                   </li>
+                  <li>
+                    <a href="#t-instrument" class="toc-h2 toc-link" data-title="Get Instruments Info">Get Instruments Info</a>
+                  </li>
+                  <li>
+                    <a href="#t-tickers" class="toc-h2 toc-link" data-title="Get Tickers">Get Tickers</a>
+                  </li>
               </ul>
           </li>
           <li>
@@ -3052,6 +3058,481 @@ The response is in the snapshot format.
 <td style="text-align: left">close</td>
 <td style="text-align: left">string</td>
 <td>Closing price</td>
+</tr>
+</tbody></table>
+<h3 id='t-instrument'>Get Instruments Info</h3>
+<p>Query for the instrument specification of online trading pairs.<br>
+<br/>
+<aside class="notice">
+TIP:
+<ul>
+  <li>Covers: USDT perpetual / Inverse contract.</li>
+</ul>
+
+</aside></p>
+
+<aside class="warning">
+Please note:
+<ul>
+  <li>Spot does not support pagination, so <code>limit</code>, <code>cursor</code> are invalid.</li>
+  <li>When query by <code>baseCoin</code>, regardless of category=<code>linear</code> or <code>inverse</code>, the result will have USDT perpetual, USDC contract and Inverse contract symbols.</li>
+</ul>
+
+</aside>
+
+<blockquote>
+<p>Request Example</p>
+</blockquote>
+<div class="highlight"><pre class="highlight console tab-console"><code><span class="go">curl "https://openapi-testnet.zoomex.com/public/v2/market/instruments-info?category=linear&amp;symbol=BTCUSDT"
+</span></code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">from</span> <span class="nn">pyzmx</span> <span class="kn">import</span> <span class="n">usdt_perpetual</span>
+<span class="n">session_unauth</span> <span class="o">=</span> <span class="n">usdt_perpetual</span><span class="p">.</span><span class="n">HTTP</span><span class="p">(</span>
+    <span class="n">endpoint</span><span class="o">=</span><span class="s">"https://openapi-testnet.zoomex.com"</span>
+<span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">session_unauth</span><span class="p">.</span><span class="n">get_instruments_info</span><span class="p">(</span>
+    <span class="n">category</span><span class="o">=</span><span class="s">"linear"</span><span class="p">,</span>
+    <span class="n">symbol</span><span class="o">=</span><span class="s">"BTCUSDT"</span><span class="p">,</span>
+<span class="p">))</span>
+</code></pre></div>
+<blockquote>
+<p>Response Example</p>
+</blockquote>
+<div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="p">{</span>
+  <span class="dl">"</span><span class="s2">retCode</span><span class="dl">"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="dl">"</span><span class="s2">retMsg</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">OK</span><span class="dl">"</span><span class="p">,</span>
+    <span class="dl">"</span><span class="s2">result</span><span class="dl">"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="dl">"</span><span class="s2">category</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">linear</span><span class="dl">"</span><span class="p">,</span>
+      <span class="dl">"</span><span class="s2">list</span><span class="dl">"</span><span class="p">:</span> <span class="p">[</span>
+      <span class="p">{</span>
+        <span class="dl">"</span><span class="s2">symbol</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">BTCUSDT</span><span class="dl">"</span><span class="p">,</span>
+        <span class="dl">"</span><span class="s2">contractType</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">LinearPerpetual</span><span class="dl">"</span><span class="p">,</span>
+        <span class="dl">"</span><span class="s2">status</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Trading</span><span class="dl">"</span><span class="p">,</span>
+        <span class="dl">"</span><span class="s2">baseCoin</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">BTC</span><span class="dl">"</span><span class="p">,</span>
+        <span class="dl">"</span><span class="s2">quoteCoin</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">USDT</span><span class="dl">"</span><span class="p">,</span>
+        <span class="dl">"</span><span class="s2">launchTime</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">1585526400000</span><span class="dl">"</span><span class="p">,</span>
+        <span class="dl">"</span><span class="s2">priceScale</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">2</span><span class="dl">"</span><span class="p">,</span>
+        <span class="dl">"</span><span class="s2">leverageFilter</span><span class="dl">"</span><span class="p">:</span> <span class="p">{</span>
+          <span class="dl">"</span><span class="s2">minLeverage</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">1</span><span class="dl">"</span><span class="p">,</span>
+          <span class="dl">"</span><span class="s2">maxLeverage</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">100.00</span><span class="dl">"</span><span class="p">,</span>
+          <span class="dl">"</span><span class="s2">leverageStep</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">0.01</span><span class="dl">"</span>
+        <span class="p">},</span>
+        <span class="dl">"</span><span class="s2">priceFilter</span><span class="dl">"</span><span class="p">:</span> <span class="p">{</span>
+          <span class="dl">"</span><span class="s2">minPrice</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">0.50</span><span class="dl">"</span><span class="p">,</span>
+          <span class="dl">"</span><span class="s2">maxPrice</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">999999.00</span><span class="dl">"</span><span class="p">,</span>
+          <span class="dl">"</span><span class="s2">tickSize</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">0.50</span><span class="dl">"</span>
+        <span class="p">},</span>
+        <span class="dl">"</span><span class="s2">lotSizeFilter</span><span class="dl">"</span><span class="p">:</span> <span class="p">{</span>
+          <span class="dl">"</span><span class="s2">maxOrderQty</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">100.000</span><span class="dl">"</span><span class="p">,</span>
+          <span class="dl">"</span><span class="s2">minOrderQty</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">0.001</span><span class="dl">"</span><span class="p">,</span>
+          <span class="dl">"</span><span class="s2">qtyStep</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">0.001</span><span class="dl">"</span><span class="p">,</span>
+          <span class="dl">"</span><span class="s2">postOnlyMaxOrderQty</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">1000.000</span><span class="dl">"</span>
+        <span class="p">},</span>
+        <span class="dl">"</span><span class="s2">fundingInterval</span><span class="dl">"</span><span class="p">:</span> <span class="mi">480</span><span class="p">,</span>
+        <span class="dl">"</span><span class="s2">settleCoin</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">USDT</span><span class="dl">"</span>
+      <span class="p">}</span>
+    <span class="p">],</span>
+      <span class="dl">"</span><span class="s2">nextPageCursor</span><span class="dl">"</span><span class="p">:</span> <span class="dl">""</span>
+  <span class="p">},</span>
+  <span class="dl">"</span><span class="s2">retExtInfo</span><span class="dl">"</span><span class="p">:</span> <span class="p">{},</span>
+  <span class="dl">"</span><span class="s2">time</span><span class="dl">"</span><span class="p">:</span> <span class="mi">1672712495660</span>
+<span class="p">}</span>
+</code></pre></div>
+<p class="fake_header">HTTP Request</p>
+
+<p>GET
+<code><span id=instrument>/public/v2/market/instruments-info</span></code>
+<button class="clipboard_button" data-clipboard-action="copy" data-clipboard-target="#plIndexPriceKline"><img src="../../images/copy_to_clipboard-ff25494f.png" height=15 width=15></img></button></p>
+
+<p class="fake_header">Request Parameters</p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameter</th>
+<th style="text-align: left">Required</th>
+<th style="text-align: left">Type</th>
+<th>Comments</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left"><a href="#category-category">category</a></td>
+<td style="text-align: left"><b>true</b></td>
+<td style="text-align: left">string</td>
+<td>Product type. <code>linear</code>,<code>inverse</code></td>
+</tr>
+<tr>
+<td style="text-align: left"><a href="#symbol-symbol">symbol</a></td>
+<td style="text-align: left">false</td>
+<td style="text-align: left">string</td>
+<td>Symbol name</td>
+</tr>
+<tr>
+<td style="text-align: left"><a href="#status-status">status</a></td>
+<td style="text-align: left">false</td>
+<td style="text-align: left">string</td>
+<td>Symbol status filter</td>
+</tr>
+<tr>
+<td style="text-align: left">baseCoin</td>
+<td style="text-align: left">false</td>
+<td style="text-align: left">string</td>
+<td>Base coin.</td>
+</tr>
+<tr>
+<td style="text-align: left">limit</td>
+<td style="text-align: left">false</td>
+<td style="text-align: left">integer</td>
+<td>Limit for data size per page. [<code>1</code>, <code>1000</code>]. Default： <code>500</code></td>
+</tr>
+<tr>
+<td style="text-align: left">cursor</td>
+<td style="text-align: left">false</td>
+<td style="text-align: left">string</td>
+<td>Cursor. Use the <code>nextPageCursor</code> token from the response to retrieve the next page of the result set</td>
+</tr>
+</tbody></table>
+
+<p class="fake_header">translation missing: en.responseresponses</p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">translation missing: en.column_response</th>
+<th style="text-align: left">Type</th>
+<th>Comment</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">category</td>
+<td style="text-align: left">string</td>
+<td>Product type</td>
+</tr>
+<tr>
+<td style="text-align: left">nextPageCursor</td>
+<td style="text-align: left">string</td>
+<td>Cursor. Used to pagination</td>
+</tr>
+<tr>
+<td style="text-align: left">list</td>
+<td style="text-align: left">array</td>
+<td>Object</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt;symbol</td>
+<td style="text-align: left">string</td>
+<td>Symbol name</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt;contractType</td>
+<td style="text-align: left">string</td>
+<td>Contract type</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt;status</td>
+<td style="text-align: left">string</td>
+<td>Instrument status</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt;baseCoin</td>
+<td style="text-align: left">string</td>
+<td>Base coin</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt;quoteCoin</td>
+<td style="text-align: left">string</td>
+<td>Quote coin</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt;launchTime</td>
+<td style="text-align: left">string</td>
+<td>Launch timestamp (ms)</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt;priceScale</td>
+<td style="text-align: left">string</td>
+<td>Price scale</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt;leverageFilter</td>
+<td style="text-align: left">Object</td>
+<td>Leverage attributes</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt;&gt;minLeverage</td>
+<td style="text-align: left">string</td>
+<td>Minimum leverage</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt;&gt;maxLeverage</td>
+<td style="text-align: left">string</td>
+<td>Maximum leverage</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt;&gt;leverageStep</td>
+<td style="text-align: left">string</td>
+<td>The step to increase/reduce leverage</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt;priceFilter</td>
+<td style="text-align: left">Object</td>
+<td>Price attributes</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt;&gt;minPrice</td>
+<td style="text-align: left">string</td>
+<td>Minimum order price</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt;&gt;maxPrice</td>
+<td style="text-align: left">string</td>
+<td>Maximum order price</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt;&gt;tickSize</td>
+<td style="text-align: left">string</td>
+<td>The step to increase/reduce order price</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt;lotSizeFilter</td>
+<td style="text-align: left">Object</td>
+<td>Size attributes</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt;&gt;maxOrderQty</td>
+<td style="text-align: left">string</td>
+<td>Maximum order quantity</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt;&gt;minOrderQty</td>
+<td style="text-align: left">string</td>
+<td>Minimum order quantity</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt;&gt;qtyStep</td>
+<td style="text-align: left">string</td>
+<td>The step to increase/reduce order quantity</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt;&gt;postOnlyMaxOrderQty</td>
+<td style="text-align: left">string</td>
+<td>Maximum order qty for PostOnly order</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt;fundingInterval</td>
+<td style="text-align: left">integer</td>
+<td>Funding interval (minute)</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt;settleCoin</td>
+<td style="text-align: left">string</td>
+<td>Settle coin</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt;<a href="#copytrading-copytrading">copyTrading</a></td>
+<td style="text-align: left">string</td>
+<td>Copy trade symbol or not</td>
+</tr>
+</tbody></table>
+<h3 id='t-tickers'>Get Tickers</h3>
+<p>Query for the latest price snapshot, best bid/ask price, and trading volume in the last 24 hours.<br>
+<br/>
+<aside class="notice">
+  TIP:
+<ul>
+  <li>Covers: USDT perpetual / Inverse contract.</li>
+</ul>
+
+</aside></p>
+
+<blockquote>
+<p>Request Example</p>
+</blockquote>
+<div class="highlight"><pre class="highlight console tab-console"><code><span class="go">curl "https://openapi-testnet.zoomex.com/public/v2/market/tickers?category=inverse&amp;symbol=BTCUSD"
+</span></code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">from</span> <span class="nn">pyzmx</span> <span class="kn">import</span> <span class="n">usdt_perpetual</span>
+<span class="n">session_unauth</span> <span class="o">=</span> <span class="n">usdt_perpetual</span><span class="p">.</span><span class="n">HTTP</span><span class="p">(</span>
+    <span class="n">endpoint</span><span class="o">=</span><span class="s">"https://openapi-testnet.zoomex.com"</span>
+<span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">session_unauth</span><span class="p">.</span><span class="n">get_tickers</span><span class="p">(</span>
+    <span class="n">category</span><span class="o">=</span><span class="s">"inverse"</span><span class="p">,</span>
+    <span class="n">symbol</span><span class="o">=</span><span class="s">"BTCUSD"</span><span class="p">,</span>
+<span class="p">))</span>
+</code></pre></div>
+<blockquote>
+<p>Response Example</p>
+</blockquote>
+<div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="p">{</span>
+  <span class="dl">"</span><span class="s2">retCode</span><span class="dl">"</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+    <span class="dl">"</span><span class="s2">retMsg</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">OK</span><span class="dl">"</span><span class="p">,</span>
+    <span class="dl">"</span><span class="s2">result</span><span class="dl">"</span><span class="p">:</span> <span class="p">{</span>
+    <span class="dl">"</span><span class="s2">category</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">inverse</span><span class="dl">"</span><span class="p">,</span>
+      <span class="dl">"</span><span class="s2">list</span><span class="dl">"</span><span class="p">:</span> <span class="p">[</span>
+      <span class="p">{</span>
+        <span class="dl">"</span><span class="s2">symbol</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">BTCUSD</span><span class="dl">"</span><span class="p">,</span>
+        <span class="dl">"</span><span class="s2">lastPrice</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">16597.00</span><span class="dl">"</span><span class="p">,</span>
+        <span class="dl">"</span><span class="s2">indexPrice</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">16598.54</span><span class="dl">"</span><span class="p">,</span>
+        <span class="dl">"</span><span class="s2">markPrice</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">16596.00</span><span class="dl">"</span><span class="p">,</span>
+        <span class="dl">"</span><span class="s2">prevPrice24h</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">16464.50</span><span class="dl">"</span><span class="p">,</span>
+        <span class="dl">"</span><span class="s2">price24hPcnt</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">0.008047</span><span class="dl">"</span><span class="p">,</span>
+        <span class="dl">"</span><span class="s2">highPrice24h</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">30912.50</span><span class="dl">"</span><span class="p">,</span>
+        <span class="dl">"</span><span class="s2">lowPrice24h</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">15700.00</span><span class="dl">"</span><span class="p">,</span>
+        <span class="dl">"</span><span class="s2">prevPrice1h</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">16595.50</span><span class="dl">"</span><span class="p">,</span>
+        <span class="dl">"</span><span class="s2">openInterest</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">373504107</span><span class="dl">"</span><span class="p">,</span>
+        <span class="dl">"</span><span class="s2">openInterestValue</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">22505.67</span><span class="dl">"</span><span class="p">,</span>
+        <span class="dl">"</span><span class="s2">turnover24h</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">2352.94950046</span><span class="dl">"</span><span class="p">,</span>
+        <span class="dl">"</span><span class="s2">volume24h</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">49337318</span><span class="dl">"</span><span class="p">,</span>
+        <span class="dl">"</span><span class="s2">fundingRate</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">-0.001034</span><span class="dl">"</span><span class="p">,</span>
+        <span class="dl">"</span><span class="s2">nextFundingTime</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">1672387200000</span><span class="dl">"</span><span class="p">,</span>
+        <span class="dl">"</span><span class="s2">ask1Size</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">1</span><span class="dl">"</span><span class="p">,</span>
+        <span class="dl">"</span><span class="s2">bid1Price</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">16596.00</span><span class="dl">"</span><span class="p">,</span>
+        <span class="dl">"</span><span class="s2">ask1Price</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">16597.50</span><span class="dl">"</span><span class="p">,</span>
+        <span class="dl">"</span><span class="s2">bid1Size</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">1</span><span class="dl">"</span>
+      <span class="p">}</span>
+    <span class="p">]</span>
+  <span class="p">},</span>
+  <span class="dl">"</span><span class="s2">retExtInfo</span><span class="dl">"</span><span class="p">:</span> <span class="p">{},</span>
+  <span class="dl">"</span><span class="s2">time</span><span class="dl">"</span><span class="p">:</span> <span class="mi">1672376496682</span>
+<span class="p">}</span>
+</code></pre></div>
+<p class="fake_header">HTTP Request</p>
+
+<p>GET
+<code><span id=instrument>/public/v2/market/tickers</span></code>
+<button class="clipboard_button" data-clipboard-action="copy" data-clipboard-target="#plIndexPriceKline"><img src="../../images/copy_to_clipboard-ff25494f.png" height=15 width=15></img></button></p>
+
+<p class="fake_header">Request Parameters</p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameter</th>
+<th style="text-align: left">Required</th>
+<th style="text-align: left">Type</th>
+<th>Comments</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left"><a href="#category-category">category</a></td>
+<td style="text-align: left"><b>true</b></td>
+<td style="text-align: left">string</td>
+<td>Product type. <code>linear</code>,<code>inverse</code></td>
+</tr>
+<tr>
+<td style="text-align: left"><a href="#symbol-symbol">symbol</a></td>
+<td style="text-align: left">false</td>
+<td style="text-align: left">string</td>
+<td>Symbol name</td>
+</tr>
+</tbody></table>
+
+<p class="fake_header">Response Parameters</p>
+
+<table><thead>
+<tr>
+<th style="text-align: left">Parameter</th>
+<th style="text-align: left">Type</th>
+<th>Comment</th>
+</tr>
+</thead><tbody>
+<tr>
+<td style="text-align: left">category</td>
+<td style="text-align: left">string</td>
+<td>Product type</td>
+</tr>
+<tr>
+<td style="text-align: left">list</td>
+<td style="text-align: left">array</td>
+<td>Object</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt;symbol</td>
+<td style="text-align: left">string</td>
+<td>Symbol name</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt;lastPrice</td>
+<td style="text-align: left">string</td>
+<td>Last price</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt;indexPrice</td>
+<td style="text-align: left">string</td>
+<td>Index price</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt;markPrice</td>
+<td style="text-align: left">string</td>
+<td>Mark price</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt;prevPrice24h</td>
+<td style="text-align: left">string</td>
+<td>Market price 24 hours ago</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt;price24hPcnt</td>
+<td style="text-align: left">string</td>
+<td>Percentage change of market price relative to 24h</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt;highPrice24h</td>
+<td style="text-align: left">string</td>
+<td>The highest price in the last 24 hours</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt;lowPrice24h</td>
+<td style="text-align: left">string</td>
+<td>The lowest price in the last 24 hours</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt;prevPrice1h</td>
+<td style="text-align: left">string</td>
+<td>Market price an hour ago</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt;openInterest</td>
+<td style="text-align: left">Object</td>
+<td>Open interest size</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt;openInterestValue</td>
+<td style="text-align: left">string</td>
+<td>Open interest value</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt;turnover24h</td>
+<td style="text-align: left">string</td>
+<td>Turnover for 24h</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt;volume24h</td>
+<td style="text-align: left">string</td>
+<td>Volume for 24h</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt;fundingRate</td>
+<td style="text-align: left">string</td>
+<td>Funding rate</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt;nextFundingTime</td>
+<td style="text-align: left">string</td>
+<td>Next funding time (ms)</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt;ask1Size</td>
+<td style="text-align: left">string</td>
+<td>Best ask size</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt;bid1Price</td>
+<td style="text-align: left">Object</td>
+<td>Best bid price</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt;ask1Price</td>
+<td style="text-align: left">string</td>
+<td>Best ask price</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt;bid1Size</td>
+<td style="text-align: left">string</td>
+<td>Best bid size</td>
 </tr>
 </tbody></table>
 <h1 id='t-accountdata'>Account Data Endpoints</h1>

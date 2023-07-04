@@ -2684,11 +2684,7 @@ function copyStringToClipboard (endpoint) {
 <td style="text-align: left"><a href="#status-status">status</a></td>
 <td style="text-align: left">false</td>
 <td style="text-align: left">string</td>
-<td>交易對狀態篩選
-<ul>
-  <li>現貨/期貨 僅有<code>Trading</code>狀態.</li>
-</ul>
-</td>
+<td>交易對狀態篩選</td>
 </tr>
 <tr>
 <td style="text-align: left">baseCoin</td>
@@ -3034,12 +3030,27 @@ function copyStringToClipboard (endpoint) {
 <td style="text-align: left">string</td>
 <td>下次結算資金費用的時間 (毫秒)</td>
 </tr>
+<tr>
+<td style="text-align: left">&gt;ask1Size</td>
+<td style="text-align: left">string</td>
+<td>買1價的數量</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt;bid1Price</td>
+<td style="text-align: left">Object</td>
+<td>買1價</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt;ask1Price</td>
+<td style="text-align: left">string</td>
+<td>賣1價</td>
+</tr>
+<tr>
+<td style="text-align: left">&gt;bid1Size</td>
+<td style="text-align: left">string</td>
+<td>買1價的數量</td>
+</tr>
 </tbody></table>
-
-<p>|&gt;ask1Size| string| 買1價的數量|
-|&gt;bid1Price| Object| 買1價|
-|&gt;ask1Price| string| 賣1價|
-|&gt;bid1Size| string| 買1價的數量|</p>
 <h1 id='t-accountdata'>賬戶/交易接口</h1>
 <p>以下賬戶/交易接口都需要鑒權.</p>
 <h2 id='t-activeorders'>活動單</h2><h3 id='t-placeactive'>創建活動委托單</h3>

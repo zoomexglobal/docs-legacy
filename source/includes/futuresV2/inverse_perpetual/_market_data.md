@@ -763,10 +763,6 @@ GET
 |>highPrice24h| string| t(:tickers_response_highPrice24h)|
 |>lowPrice24h| string| t(:tickers_response_lowPrice24h)|
 |>prevPrice1h| string| t(:tickers_response_prevPrice1h)|
-|>openInterest| Object| t(:tickers_response_openInterest)|
-|>openInterestValue| string| t(:tickers_response_openInterestValue)|
-|>turnover24h| string| t(:tickers_response_turnover24h)|
-|>volume24h| string| t(:tickers_response_volume24h)|
 |>fundingRate| string| t(:tickers_response_fundingRate)|
 |>nextFundingTime| string| t(:tickers_response_nextFundingTime)|
 |>ask1Size| string| t(:tickers_response_ask1Size)|
